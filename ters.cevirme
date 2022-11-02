@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+
+resim = cv2.imread("BoluYedigoller.jpg")
+cv2.imshow("Orjinal Resim",resim)
+en,boy,katman = np.shape(resim)
+
+yeniResim = np.zeros((en,boy,katman) , dtype=np.uint8)
+
+for i in range(en-1):
+    for j in range(boy-1):
+        for k in range(katman):
+            yeniResim[i,j,k] = resim[i,boy-j-1,k]
+
+cv2.imshow("Ters Çevrilmiş Resim",yeniResim)
